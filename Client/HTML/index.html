@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOODI - Trang chủ</title>
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjRkY2QjM1Ii8+CjxwYXRoIGQ9Ik0xMCAxM0gxOEw0IDJIMTZDMTYuMSAyIDE3IDIuOSAxNyA0VjE0SDEwWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTIzIDhIMjZMMTYgMkgxN0M0Ljg4IDIgMiAyLjg4IDIgNFYxNEMyIDE1LjEyIDIuODggMTcgNCAxN0gyMEwxOSAxN0MyMC4xIDE3IDIxIDE2LjEgMjEgMTVWMThIMjJDMjMuMTIgMTggMjQgMTcuMTIgMjQgMTZWMThIMjZWMHoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <!-- Header embedded directly to avoid CORS -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="./index.html">🍲 FOODI</a>
+            </div>
+            <nav class="nav-menu">
+                <a href="./index.html">Trang chủ</a>
+                <a href="./profile.html">Hồ sơ</a>
+                <a href="./cart.html">Giỏ hàng</a>
+                <a href="./admin.html">Admin</a>
+                <a href="./shipper.html">Shipper</a>
+            </nav>
+            <div class="header-actions">
+                <a href="./register.html" class="btn-login">Đăng ký / Đăng nhập</a>
+                <div class="cart-icon" id="cartIcon">
+                    🛒 <span class="cart-badge" id="cartBadge">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Thưởng thức ẩm thực Việt</h1>
+            <p>Món ngon truyền thống - Giao hàng nhanh chóng</p>
+            <a href="#foods" class="btn-login" style="display:inline-block;">Xem menu</a>
+        </div>
+    </section>
+
+    <!-- Food Grid Template (embedded) - Enhanced with quantity, delivery, promo -->
+    <div class="food-card template" style="display:none;">
+        <img src="" alt="Món ăn" class="food-img">
+        <div class="food-info">
+            <h3 class="food-name"></h3>
+            <span class="promo-badge">Giảm 10k</span>
+        </div>
+        <p class="food-price"></p>
+        <div class="delivery-info">
+            🚚 ~20 phút | 15.000đ phí giao
+        </div>
+        <div class="food-qty-controls">
+            <button class="qty-btn" data-action="-">-</button>
+            <span class="qty-display">0</span>
+            <button class="qty-btn" data-action="+">+</button>
+        </div>
+        <button class="add-to-cart-btn">Thêm vào giỏ</button>
+    </div>
+
+    <!-- Food Grid -->
+    <section class="food-section" id="foods">
+        <div class="container">
+<div class="menu-controls">
+    <input type="text" id="searchInput" placeholder="Tìm kiếm món ăn..." class="search-input">
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Tất cả</button>
+        <button class="filter-btn" data-filter="popular">Phổ biến</button>
+        <button class="filter-btn" data-filter="cheap">Giá rẻ</button>
+    </div>
+</div>
+<h2 style="text-align:center; margin: 1rem 0 3rem; font-size:2.5rem;">Menu nổi bật</h2>
+            <div id="foodGrid" class="food-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Newsletter Banner -->
+        <div class="footer-newsletter">
+            <div class="newsletter-content">
+                <div>
+                    <h3>🍲 Đăng ký nhận ưu đãi!</h3>
+                    <p>Nhận ngay voucher giảm 20k cho đơn hàng đầu tiên</p>
+                </div>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <input type="email" placeholder="Nhập email của bạn..." aria-label="Email đăng ký">
+                    <button type="submit">Đăng ký</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Main Footer Grid -->
+            <div class="footer-main">
+                <!-- Brand Column -->
+                <div class="brand-col">
+                    <a href="./index.html" class="footer-brand">🍲 FOODI</a>
+                    <p>Website đặt thức ăn Việt Nam hiện đại. Giao hàng nhanh, giá tốt, món ngon truyền thống.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook">f</a>
+                        <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-icon" aria-label="YouTube">YT</a>
+                        <a href="#" class="social-icon" aria-label="Zalo">Zl</a>
+                    </div>
+                </div>
+
+                <!-- Menu Column -->
+                <div class="footer-col">
+                    <h4>Danh mục món</h4>
+                    <ul>
+                        <li><a href="#foods">Phở &amp; Bún</a></li>
+                        <li><a href="#foods">Bánh mì</a></li>
+                        <li><a href="#foods">Bánh xèo</a></li>
+                        <li><a href="#foods">Gỏi cuốn</a></li>
+                        <li><a href="#foods">Mì Quảng</a></li>
+                        <li><a href="#foods">Chả cuốn</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Column -->
+                <div class="footer-col">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="./index.html">Trang chủ</a></li>
+                        <li><a href="./register.html">Đăng ký</a></li>
+                        <li><a href="./login.html">Đăng nhập</a></li>
+                        <li><a href="./profile.html">Hồ sơ</a></li>
+                        <li><a href="./cart.html">Giỏ hàng</a></li>
+                        <li><a href="./shipper.html">Shipper</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="footer-col">
+                    <h4>Liên hệ</h4>
+                    <ul class="contact-list">
+                        <li><span class="icon">📞</span><span>0123 456 789</span></li>
+                        <li><span class="icon">📧</span><span>foodi@example.com</span></li>
+                        <li><span class="icon">📍</span><span>123 Nguyễn Huệ, Q1, TP.HCM</span></li>
+                        <li><span class="icon">⏰</span><span>7:00 – 22:00 mỗi ngày</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 FOODI. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Chính sách bảo mật</a>
+                    <span>|</span>
+                    <a href="#">Điều khoản sử dụng</a>
+                    <span>|</span>
+                    <a href="./admin.html">Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/main.js"></script>
+</body>
+</html>
