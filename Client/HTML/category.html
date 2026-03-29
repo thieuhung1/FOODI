@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục món - FOODI</title>
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjRkY2QjM1Ii8+CjxwYXRoIGQ9Ik0xMCAxM0gxOEw0IDJIMTZDMTYuMSAyIDE3IDIuOSAxNyA0VjE0SDEwWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTIzIDhIMjZMMTYgMkgxN0M0Ljg4IDIgMiAyLjg4IDIgNFYxNEMyIDE1LjEyIDIuODggMTcgNCAxN0gyMEwxOSAxN0MyMC4xIDE3IDIxIDE2LjEgMjEgMTVWMThIMjJDMjMuMTIgMTggMjQgMTcuMTIgMjQgMTZWMThIMjZWMHoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <!-- Header embedded directly to avoid CORS -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="./index.html">🍲 FOODI</a>
+            </div>
+            <nav class="nav-menu">
+                <a href="./index.html">Trang chủ</a>
+                <a href="./category.html">Danh mục</a>
+                <a href="./profile.html">Hồ sơ</a>
+            </nav>
+            <div class="header-actions">
+                <a href="./register.html" class="btn-login">Đăng ký / Đăng nhập</a>
+                <div class="cart-icon" id="cartIcon">
+                    🛒 <span class="cart-badge" id="cartBadge">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Hero -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../ASSETS/Images/phở bò.jpeg') center/cover;">
+        <div class="container">
+            <h1>Danh mục món ngon</h1>
+            <p>Khám phá các món ăn truyền thống Việt Nam theo danh mục</p>
+        </div>
+    </section>
+
+    <!-- Category Filters -->
+    <section class="food-section">
+        <div class="container">
+            <div class="menu-controls">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm món ăn..." class="search-input">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="pho">Phở & Bún</button>
+                    <button class="filter-btn" data-filter="banh-mi">Bánh mì</button>
+                    <button class="filter-btn" data-filter="banh-xeo">Bánh xèo</button>
+                    <button class="filter-btn" data-filter="goi">Gỏi cuốn</button>
+                    <button class="filter-btn" data-filter="mi">Mì Quảng</button>
+                    <button class="filter-btn" data-filter="cha">Chả cuốn</button>
+                </div>
+            </div>
+            <h2 style="text-align:center; margin: 2rem 0 3rem; font-size:2.5rem;">Chọn danh mục yêu thích</h2>
+            
+            <!-- Food Grid Template (embedded) -->
+            <div class="food-card template" style="display:none;">
+                <img src="" alt="Món ăn" class="food-img">
+                <div class="food-info">
+                    <h3 class="food-name"></h3>
+                    <span class="promo-badge">Giảm 10k</span>
+                </div>
+                <p class="food-price"></p>
+                <div class="delivery-info">
+                    🚚 ~20 phút | 15.000đ phí giao
+                </div>
+                <div class="food-qty-controls">
+                    <button class="qty-btn" data-action="-">-</button>
+                    <span class="qty-display">0</span>
+                    <button class="qty-btn" data-action="+">+</button>
+                </div>
+                <button class="add-to-cart-btn">Thêm vào giỏ</button>
+            </div>
+
+            <div id="foodGrid" class="food-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer (reuse from other pages) -->
+    <footer class="footer">
+        <div class="footer-newsletter">
+            <div class="newsletter-content">
+                <div>
+                    <h3>🍲 Đăng ký nhận ưu đãi!</h3>
+                    <p>Nhận ngay voucher giảm 20k cho đơn hàng đầu tiên</p>
+                </div>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <input type="email" placeholder="Nhập email của bạn..." aria-label="Email đăng ký">
+                    <button type="submit">Đăng ký</button>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-main">
+                <div class="brand-col">
+                    <a href="./index.html" class="footer-brand">🍲 FOODI</a>
+                    <p>Website đặt thức ăn Việt Nam hiện đại. Giao hàng nhanh, giá tốt, món ngon truyền thống.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook">f</a>
+                        <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-icon" aria-label="YouTube">YT</a>
+                        <a href="#" class="social-icon" aria-label="Zalo">Zl</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Danh mục món</h4>
+                    <ul>
+                        <li><a href="./category.html">Phở & Bún</a></li>
+                        <li><a href="./category.html">Bánh mì</a></li>
+                        <li><a href="./category.html">Bánh xèo</a></li>
+                        <li><a href="./category.html">Gỏi cuốn</a></li>
+                        <li><a href="./category.html">Mì Quảng</a></li>
+                        <li><a href="./category.html">Chả cuốn</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="./index.html">Trang chủ</a></li>
+                        <li><a href="./register.html">Đăng ký</a></li>
+                        <li><a href="./login.html">Đăng nhập</a></li>
+                        <li><a href="./profile.html">Hồ sơ</a></li>
+                        <li><a href="./cart.html">Giỏ hàng</a></li>
+                        <li><a href="./shipper.html">Shipper</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên hệ</h4>
+                    <ul class="contact-list">
+                        <li><span class="icon">📞</span><span>0123 456 789</span></li>
+                        <li><span class="icon">📧</span><span>foodi@example.com</span></li>
+                        <li><span class="icon">📍</span><span>123 Nguyễn Huệ, Q1, TP.HCM</span></li>
+                        <li><span class="icon">⏰</span><span>7:00 – 22:00 mỗi ngày</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FOODI. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Chính sách bảo mật</a>
+                    <span>|</span>
+                    <a href="#">Điều khoản sử dụng</a>
+                    <span>|</span>
+                    <a href="./admin.html">Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/main.js"></script>
+    <script>
+        // Category-specific JS (extend main.js logic)
+        document.addEventListener('DOMContentLoaded', () => {
+            const foods = [
+                { id: 1, name: 'Phở Bò', price: 65000, img: '../ASSETS/Images/phở bò.jpeg', category: 'pho' },
+                { id: 2, name: 'Bánh Mì', price: 25000, img: '../ASSETS/Images/bánh mì.jpg', category: 'banh-mi' },
+                { id: 3, name: 'Bánh Xèo', price: 45000, img: '../ASSETS/Images/bánh xèo.jpg', category: 'banh-xeo' },
+                { id: 4, name: 'Gỏi Cuốn', price: 30000, img: '../ASSETS/Images/Gỏi cuốn.webp', category: 'goi' },
+                { id: 5, name: 'Mì Quảng', price: 55000, img: '../ASSETS/Images/mì quảng.jpg', category: 'mi' },
+                { id: 6, name: 'Chả Cuốn', price: 35000, img: '../ASSETS/Images/chả cuốn.jpg', category: 'cha' }
+            ];
+
+            // Reuse buildFoodCard and render logic from main.js
+            window.foods = foods; // Make available for main.js
+
+            const template = document.querySelector('.food-card.template');
+            const container = document.getElementById('foodGrid');
+            
+            function renderCategoryFoods(filteredFoods) {
+                container.innerHTML = '';
+                filteredFoods.forEach(food => container.appendChild(buildFoodCard(food, template)));
+            }
+
+            // Category filter
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const category = btn.dataset.filter;
+                    let filtered = foods;
+                    if (category !== 'all') {
+                        filtered = foods.filter(f => f.category === category);
+                    }
+                    
+                    renderCategoryFoods(filtered);
+                });
+            });
+
+            // Initial render
+            renderCategoryFoods(foods);
+
+            // Search
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const filtered = foods.filter(f => f.name.toLowerCase().includes(term));
+                renderCategoryFoods(filtered);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán - FOODI</title>
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjRkY2QjM1Ii8+CjxwYXRoIGQ9Ik0xMCAxM0gxOEw0IDJIMTZDMTYuMSAyIDE3IDIuOSAxNyA0VjE0SDEwWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTIzIDhIMjZMMTYgMkgxN0M0Ljg4IDIgMiAyLjg4IDIgNFYxNEMyIDE1LjEyIDIuODggMTcgNCAxN0gyMEwxOSAxN0MyMC4xIDE3IDIxIDE2LjEgMjEgMTVWMThIMjJDMjMuMTIgMTggMjQgMTcuMTIgMjQgMTZWMThIMjZWMHoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <!-- Header embedded directly to avoid CORS -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="./index.html">🍲 FOODI</a>
+            </div>
+            <nav class="nav-menu">
+                <a href="./index.html">Trang chủ</a>
+                <a href="./category.html">Danh mục</a>
+                <a href="./profile.html">Hồ sơ</a>
+            </nav>
+            <div class="header-actions">
+                <a href="./register.html" class="btn-login">Đăng ký / Đăng nhập</a>
+                <div class="cart-icon" id="cartIcon">
+                    🛒 <span class="cart-badge" id="cartBadge">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="checkout-container" style="padding:4rem 0;">
+        <div class="container">
+            <h1 style="text-align:center; margin-bottom:3rem;">Chọn phương thức thanh toán</h1>
+            
+            <!-- Payment Methods -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2rem; margin-bottom:3rem;">
+                <div class="payment-method" onclick="selectPayment('cod')" id="cod">
+                    <div style="font-size:2rem; margin-bottom:1rem;">💰</div>
+                    <h3>Thanh toán khi nhận hàng (COD)</h3>
+                    <p>Thanh toán trực tiếp cho shipper khi nhận hàng. An toàn & tiện lợi.</p>
+                    <div class="payment-badge">Phổ biến nhất</div>
+                </div>
+                <div class="payment-method" onclick="selectPayment('transfer')" id="transfer">
+                    <div style="font-size:2rem; margin-bottom:1rem;">🏦</div>
+                    <h3>Chuyển khoản ngân hàng</h3>
+                    <p>Chuyển khoản trước qua Vietcombank/Momo/ZaloPay.</p>
+                    <div class="payment-info">
+                        <strong>Vietcombank:</strong> 123456789<br>
+                        Nội dung: [Mã đơn hàng]
+                    </div>
+                </div>
+                <div class="payment-method" onclick="selectPayment('card')" id="card">
+                    <div style="font-size:2rem; margin-bottom:1rem;">💳</div>
+                    <h3>Thẻ quốc tế (VISA/Master)</h3>
+                    <p>Thanh toán an toàn qua cổng OnePay. Bảo mật 100%.</p>
+                    <div class="security-badges">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCA0MCAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjI1IiBmaWxsPSIjRkZGRkZGIi8+Ci90ZXh0IHg9IjEwIiB5PSIxOCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjkiIGZpbGw9IiMwMDAwMDAiPlZJU0E8L3RleHQ+Cjwvc3ZnPgo=" style="width:30px;height:20px;margin-right:5px;">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCA0MCAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjI1IiBmaWxsPSIjRkZGRkZGIi8+Ci90ZXh0IHg9IjUiIHk9IjE4IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iOSI+TUFTVEVSQ0FSRDwvdGV4dD4KPC9zdmc+Cg==" style="width:30px;height:20px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selected Payment Details -->
+            <div id="paymentDetails" style="background:white; padding:2rem; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.1); margin-bottom:2rem; display:none;">
+                <h3 id="selectedMethod">Phương thức đã chọn</h3>
+                <div id="methodDetails"></div>
+            </div>
+
+            <!-- Order Summary (from cart) -->
+            <div class="order-summary" style="position:sticky; top:100px;">
+                <h3>Tóm tắt giỏ hàng</h3>
+                <div id="paymentOrderItems"></div>
+                <hr>
+                <div class="total-title">Tổng thanh toán</div>
+                <div class="total-amount" id="paymentTotal">0 VNĐ</div>
+                <button id="confirmPayment" class="confirm-btn" style="display:none;">Xác nhận thanh toán</button>
+                <div style="margin-top:1rem; padding:1rem; background:#e8f5e8; border-radius:10px; font-size:0.9rem;">
+                    ✅ <strong>An toàn 100%</strong> - FOODI bảo mật thông tin thanh toán theo chuẩn PCI-DSS
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-newsletter">
+            <div class="newsletter-content">
+                <div>
+                    <h3>🍲 Đăng ký nhận ưu đãi!</h3>
+                    <p>Nhận ngay voucher giảm 20k cho đơn hàng đầu tiên</p>
+                </div>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <input type="email" placeholder="Nhập email của bạn..." aria-label="Email đăng ký">
+                    <button type="submit">Đăng ký</button>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-main">
+                <div class="brand-col">
+                    <a href="./index.html" class="footer-brand">🍲 FOODI</a>
+                    <p>Website đặt thức ăn Việt Nam hiện đại. Giao hàng nhanh, giá tốt, món ngon truyền thống.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook">f</a>
+                        <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-icon" aria-label="YouTube">YT</a>
+                        <a href="#" class="social-icon" aria-label="Zalo">Zl</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Phương thức thanh toán</h4>
+                    <ul>
+                        <li>COD - Tiền mặt</li>
+                        <li>Chuyển khoản ngân hàng</li>
+                        <li>Thẻ quốc tế VISA/Master</li>
+                        <li>Momo, ZaloPay (sắp có)</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="./index.html">Trang chủ</a></li>
+                        <li><a href="./register.html">Đăng ký</a></li>
+                        <li><a href="./login.html">Đăng nhập</a></li>
+                        <li><a href="./profile.html">Hồ sơ</a></li>
+                        <li><a href="./cart.html">Giỏ hàng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên hệ</h4>
+                    <ul class="contact-list">
+                        <li><span class="icon">📞</span><span>0123 456 789</span></li>
+                        <li><span class="icon">📧</span><span>foodi@example.com</span></li>
+                        <li><span class="icon">📍</span><span>123 Nguyễn Huệ, Q1, TP.HCM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FOODI. All rights reserved. | <a href="#">Bảo mật thanh toán</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/main.js"></script>
+    <script>
+        // Payment page specific logic
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartBadge();
+            
+            // Render cart summary
+            const orderItems = document.getElementById('paymentOrderItems');
+            const paymentTotal = document.getElementById('paymentTotal');
+            
+            if (cart && cart.length > 0) {
+                orderItems.innerHTML = cart.map(item => 
+                    `<div style="display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid #eee;">
+                        <div>
+                            <div style="font-weight:600;">${item.name}</div>
+                            <div style="color:#666;font-size:0.9rem;">x${item.quantity}</div>
+                        </div>
+                        <div style="font-weight:600;">${(item.price * item.quantity).toLocaleString()} VNĐ</div>
+                    </div>`
+                ).join('');
+                paymentTotal.textContent = getTotal().toLocaleString() + ' VNĐ';
+            } else {
+                orderItems.innerHTML = '<p style="text-align:center;color:#999;">Giỏ hàng trống</p>';
+                paymentTotal.textContent = '0 VNĐ';
+            }
+        });
+
+        function selectPayment(method) {
+            // Visual feedback
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.style.background = 'white';
+                el.style.border = '2px solid #eee';
+                el.style.transform = 'scale(1)';
+            });
+            
+            const selected = document.getElementById(method);
+            selected.style.background = 'linear-gradient(135deg, var(--primary-orange), var(--secondary-orange))';
+            selected.style.border = '2px solid var(--primary-orange)';
+            selected.style.color = 'white';
+            selected.style.transform = 'scale(1.02)';
+
+            // Show details
+            const details = document.getElementById('paymentDetails');
+            const methodDetails = document.getElementById('methodDetails');
+            const selectedMethod = document.getElementById('selectedMethod');
+            const confirmBtn = document.getElementById('confirmPayment');
+            
+            selectedMethod.textContent = `Đã chọn: ${selected.querySelector('h3').textContent}`;
+            
+            if (method === 'cod') {
+                methodDetails.innerHTML = '<p>Thanh toán trực tiếp cho shipper khi nhận hàng.</p><p style="color:green;font-weight:600;">✅ Không cần chuyển khoản trước</p>';
+            } else if (method === 'transfer') {
+                methodDetails.innerHTML = `
+                    <p><strong>Tài khoản nhận:</strong> Ngân hàng Vietcombank</p>
+                    <p><strong>Số tài khoản:</strong> 123456789 (Công ty FOODI)</p>
+                    <p><strong>Nội dung chuyển khoản:</strong> [Tự động - Mã đơn hàng]</p>
+                    <p style="color:orange;">⏱️ Xác nhận trong 5 phút</p>
+                `;
+            } else if (method === 'card') {
+                methodDetails.innerHTML = `
+                    <p>Nhập thông tin thẻ ngay sau khi xác nhận</p>
+                    <div style="background:#f8f9fa;padding:1rem;border-radius:10px;margin-top:1rem;">
+                        <strong>🔒 An toàn tuyệt đối:</strong> PCI-DSS Level 1 | Mã hóa end-to-end
+                    </div>
+                `;
+            }
+            
+            details.style.display = 'block';
+            confirmBtn.style.display = 'block';
+            confirmBtn.onclick = () => handleCheckout(); // Reuse from main.js
+        }
+
+        // Payment method styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .payment-method {
+                cursor:pointer;
+                padding:2rem;
+                border:2px solid #eee;
+                border-radius:20px;
+                text-align:center;
+                transition:all 0.3s ease;
+                box-shadow:0 4px 12px rgba(0,0,0,0.1);
+            }
+            .payment-method:hover {
+                transform:translateY(-5px);
+                box-shadow:0 10px 25px rgba(0,0,0,0.15);
+            }
+            .payment-badge {
+                background:#28a745;
+                color:white;
+                padding:0.3rem 0.8rem;
+                border-radius:20px;
+                font-size:0.8rem;
+                margin-top:1rem;
+                display:inline-block;
+            }
+            .payment-info {
+                background:#f8f9fa;
+                padding:1rem;
+                border-radius:10px;
+                font-size:0.9rem;
+                margin-top:1rem;
+            }
+            .security-badges img {
+                vertical-align:middle;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
